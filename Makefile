@@ -1,7 +1,7 @@
 APP_URL ?= http://localhost:5173
 export APP_URL
 
-test:
+test-browser:
 	npx playwright test
 
 install:
@@ -16,4 +16,4 @@ build:
 lint:
 	npm run lint
 
-ci: install dev test
+ci: install build test-browser
