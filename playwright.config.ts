@@ -1,5 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const APP_URL = process.env.APP_URL || "http://localhost:5173";
+
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv

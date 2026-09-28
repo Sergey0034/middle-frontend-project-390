@@ -1,7 +1,8 @@
 APP_URL ?= http://localhost:5173
+export APP_URL
 
 test:
-	npx playwwright test
+	npx playwright test
 
 install:
 	npm ci
