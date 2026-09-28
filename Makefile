@@ -7,6 +7,9 @@ test-browser:
 install:
 	npm ci
 
+install-browsers:
+	npx playwright install --with-deps
+
 dev:
 	npm run dev
 
@@ -16,4 +19,4 @@ build:
 lint:
 	npm run lint
 
-ci: install build test-browser
+ci: install install-browsers build test-browser
