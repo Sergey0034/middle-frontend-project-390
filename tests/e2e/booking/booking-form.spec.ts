@@ -3,9 +3,7 @@ import { fillFormBooking } from "./helpers/fillFormBooking";
 
 test.describe("Оформление бронирования", () => {
     test.beforeEach(async ({ page }, testInfo) => {
-        // testInfo.setTimeout(testInfo.timeout + 20_000);
         await page.route("**/api/flights/fl_1", async (route) => {
-            // await new Promise((r) => setTimeout(r, 3000));
             await route.fulfill({
                 status: 200,
                 contentType: "application/json",

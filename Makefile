@@ -19,4 +19,4 @@ lint:
 start:
 	npx frontend-flight-booking-server start -s ./dist
 
-ci: install install-browsers build test-browser start
+ci: install install-browsers test-browser
