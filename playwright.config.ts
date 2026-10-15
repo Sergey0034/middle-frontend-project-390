@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const APP_URL = "http://localhost:5173";
+const APP_URL = "http://localhost:5173/";
 
 export default defineConfig({
     testDir: "./tests",
@@ -8,7 +8,7 @@ export default defineConfig({
     forbidOnly: !!process.env.CI,
     retries: process.env.CI ? 2 : 0,
     workers: process.env.CI ? 1 : undefined,
-    reporter: "html",
+    reporter: process.env.CI ? "list" : "html",
     use: {
         baseURL: APP_URL,
         trace: "on-first-retry",
