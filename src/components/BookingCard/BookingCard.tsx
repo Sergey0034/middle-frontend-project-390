@@ -47,7 +47,7 @@ const BookingCard = ({ ticket }: MyBookingProps) => {
                 <div className={styles.info}>
                     {ticket.flight.airline.name} &bull; {ticket.flight.flightNumber}: {ticket.flight.origin.name} &rarr; {ticket.flight.destination.name}
                 </div>
-                <div className={styles.passengers}>Пассажиры: {ticket.passengers.map(p => `${p.firstName} ${p.lastName} ${ticket.passengers.length > 1 ? ',' : ''}`)}</div>
+                <div className={styles.passengers}>Пассажиры: {ticket.passengers.map((p, i) => `${p.firstName} ${p.lastName}${i === ticket.passengers.length - 1 ? '' : ', '}`)}</div>
                 <div className={styles.cost}>Итого: {ticket.totalPrice.amount} {iconCurrency}</div>
             </div>
             {cancelStatus === "error" && <div>Ошибка при отмене бронирования</div>}
