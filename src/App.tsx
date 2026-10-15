@@ -1,12 +1,22 @@
-import './App.css'
+import Layout from "./components/Layout/Layout";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import MyBooking from "./pages/MyBooking/MyBooking";
+import SearchFlights from "./pages/SearchFlights/SearchFlights";
+import BookingCreate from "./pages/BookingCreate/BookingCreate";
 
-function App() {
+const App = () => {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route path="/" element={<SearchFlights />} />
+                    <Route path="search-flight" element={<SearchFlights />} />
+                    <Route path="lookup" element={<MyBooking />} />
+                    <Route path="booking/:id" element={<BookingCreate />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    );
+};
 
-  return (
-    <>
-      <h1>Hello world</h1>
-    </>
-  )
-}
-
-export default App
+export default App;

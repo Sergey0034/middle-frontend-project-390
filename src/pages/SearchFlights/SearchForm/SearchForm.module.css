@@ -1,0 +1,10 @@
+.form {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.submitBtn  {
+    padding: 0 72px;
+}

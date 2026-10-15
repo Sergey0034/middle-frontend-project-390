@@ -1,75 +1,42 @@
-# React + TypeScript + Vite
+# Фронтенд для бронирования авиабилетов
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![hexlet-check](https://github.com/Sergey0034/middle-frontend-project-390/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Sergey0034/middle-frontend-project-390/actions)
 
-Currently, two official plugins are available:
+Разработайте фронтенд сервиса бронирования авиабилетов на любом фреймворке
+(React, Vue, Svelte, Angular, Solid и др.). Бэкенд предоставляет Хекслет: контракт API
+спроектирован через TypeSpec и сгенерирован в OpenAPI. На старте вы собираете интерфейс против
+mock-сервера из спецификации (Prism), а реальный бэкенд (npm-пакет) подключаете позже. Задача — реализовать интерфейс
+и интегрировать его с предоставленным API: поиск рейсов, оформление и просмотр бронирования.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Учебный проект Хекслета: https://ru.hexlet.io/programs/middle-frontend
+Как это должно работать: https://files.hexlet.app/a/5bi6gu
 
-## React Compiler
+## Стек
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- JavaScript
 
-## Expanding the ESLint configuration
+## Установка
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+<!-- Опишите установку: клонирование, зависимости, переменные окружения -->
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+git clone https://github.com/Sergey0034/middle-frontend-project-390.git
+cd middle-frontend-project-390
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Использование
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+<!-- Добавьте примеры запуска и запись asciinema — именно это смотрит работодатель -->
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
 
-```
+<details>
+<summary>Автоматические тесты Хекслета</summary>
+
+Тесты запускаются на каждый коммит. За запуск отвечает файл `.github/workflows/hexlet-check.yml` — не удаляйте и не переименовывайте ни его, ни репозиторий.
+
+</details>
+
+## О Хекслете
+
+[Хекслет](https://ru.hexlet.io/) — школа программирования: авторские программы обучения с практикой, поддержкой наставников и реальными проектами, которые остаются в резюме. Этот репозиторий — один из таких проектов.

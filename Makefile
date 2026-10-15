@@ -1,6 +1,3 @@
-APP_URL ?= http://localhost:5173
-export APP_URL
-
 test-browser:
 	npx playwright test
 
@@ -19,4 +16,7 @@ build:
 lint:
 	npm run lint
 
-ci: install install-browsers build test-browser
+start:
+	npx frontend-flight-booking-server start -s ./dist
+
+ci: install install-browsers build test-browser start

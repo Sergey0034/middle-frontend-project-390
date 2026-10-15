@@ -1,0 +1,11 @@
+:root {
+    --color-bg: #f7f8fa;
+    --color-text: #1a1a1a;
+    --color-text-divider: rgb(157, 155, 155);
+    --color-primary: #0073ee;
+    --color-border: rgb(217, 217, 217);
+
+    --font-base: Roboto, sans-serif;
+
+    --font-size-body: 16px;
+}
