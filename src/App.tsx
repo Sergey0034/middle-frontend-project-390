@@ -5,6 +5,7 @@ import SearchFlights from "./pages/SearchFlights/SearchFlights";
 import BookingCreate from "./pages/BookingCreate/BookingCreate";
 
 const App = () => {
+    throw new Error("Error Thrown on purpose to send it to Bugsink");
     return (
         <BrowserRouter>
             <Routes>

@@ -12,8 +12,6 @@ Sentry.init({
     tracesSampleRate: 0,
 });
 
-throw new Error("Error Thrown on purpose to send it to Bugsink");
-
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
         <App />
