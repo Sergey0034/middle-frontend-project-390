@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const APP_URL = "http://localhost:5173/";
+const APP_URL = "http://localhost:4173";
 
 export default defineConfig({
     testDir: "./tests",
@@ -25,7 +25,7 @@ export default defineConfig({
         command: "npm run build && npm run preview",
         url: APP_URL,
         reuseExistingServer: !!process.env.CI,
-        timeout: 120 * 1000,
+        timeout: 240 * 1000,
     },
     timeout: process.env.CI ? 60_000 : 30_000,
     expect: {
