@@ -32,6 +32,5 @@ export default defineConfig({
     webServer: {
         command: "npm run dev",
         url: APP_URL,
-        reuseExistingServer: !process.env.CI,
     },
 });
