@@ -5,7 +5,7 @@ test:
 	npx playwright test
 
 install-browsers:
-	npx playwright install --with-deps
+	npx playwright install --with-deps chromium
 
 build:
 	npm run build
