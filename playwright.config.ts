@@ -24,8 +24,8 @@ export default defineConfig({
     webServer: {
         command: "npm run build && npm run preview",
         url: APP_URL,
-        reuseExistingServer: !!process.env.CI,
-        timeout: 240 * 1000,
+        // reuseExistingServer: !!process.env.CI,
+        timeout: 300 * 1000,
     },
     timeout: process.env.CI ? 60_000 : 30_000,
     expect: {
