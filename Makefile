@@ -1,7 +1,7 @@
 install:
-	npm install
+	npm ci
 
-test-playwright:
+test:
 	npx playwright test
 
 install-browsers:
@@ -10,12 +10,7 @@ install-browsers:
 build:
 	npm run build
 
-test:
-	install-browsers test-playwright
-
 start:
 	npx frontend-flight-booking-server start -s ./dist
 
-ci: install test
-
-.PHONY: ci
+ci: install install-browsers test
