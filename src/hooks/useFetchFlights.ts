@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { api } from "../api/client";
 import type { SearchPayload } from "../pages/SearchFlights/SearchForm/SearchForm";
 
@@ -7,7 +7,7 @@ const useFetchFlights = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const search = async (payload: SearchPayload) => {
+    const search = useCallback(async (payload: SearchPayload) => {
         try {
             setLoading(true);
             setError(null);
@@ -22,7 +22,7 @@ const useFetchFlights = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, []);
 
     return { flights, loading, error, search };
 };
