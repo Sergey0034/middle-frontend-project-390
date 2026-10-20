@@ -130,6 +130,17 @@ test.describe("Оформление бронирования", () => {
     });
 
     test("состояние «рейс не найден»: открыт /booking/<id рейса> с неизвестным id.", async ({ page }) => {
+         await page.route("**/api/flights/test_1", async (route) => {
+             await route.fulfill({
+                 status: 404,
+                 contentType: "application/json",
+                 body: JSON.stringify({
+                     statusCode: 400,
+                     code: "validation_error",
+                     message: "Рейс не найден",
+                 }),
+             });
+         });
         await page.goto("/booking/test_1");
         await expect(page.getByTestId("flight-not-found")).toBeVisible();
     });
