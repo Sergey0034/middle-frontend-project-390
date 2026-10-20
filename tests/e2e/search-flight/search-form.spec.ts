@@ -15,6 +15,9 @@ test.describe("Форма поиска рейсов", () => {
             }),
         );
         await page.goto("/");
+        await page
+            .getByTestId("flight-search-form")
+            .waitFor({ state: "visible" });
     });
 
     test("Отображение всех полей формы", async ({page}) => {

@@ -52,6 +52,9 @@ test.describe("Результаты поиска рейсов", () => {
             }),
         );
         await page.goto("/");
+        await page
+            .getByTestId("flight-search-form")
+            .waitFor({ state: "visible" });
     });
 
     test("Список рейсов после успешного поиска", async ({ page }) => {
