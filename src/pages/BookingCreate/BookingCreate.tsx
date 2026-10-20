@@ -209,7 +209,6 @@ const BookingCreate = () => {
                                 type="primary"
                                 htmlType="submit"
                                 className={styles.bookingBtn}
-                                disabled={disabled}
                                 data-testid="booking-submit"
                             >
                                 Забронировать
