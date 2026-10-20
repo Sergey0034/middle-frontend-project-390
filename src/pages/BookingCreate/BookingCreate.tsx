@@ -14,7 +14,6 @@ const BookingCreate = () => {
     const { flight, loading, error } = useFetchFlight(id);
     const [form] = Form.useForm();
     const [countPassengers, setCountPassengers] = useState(1);
-    const [disabled, setDisabled] = useState(true);
     const [statusSubmit, setStatusSubmit] = useState("idle");
     const [submitResult, setSubmitResult] = useState<Ticket>();
     const onBooking = async (values: Record<string, string | Dayjs>) => {
@@ -41,14 +40,6 @@ const BookingCreate = () => {
             setStatusSubmit("error");
         }
     }
-
-    const onFieldsChange = () => {
-        const hasErrors = form.getFieldsError().some(({ errors }) => errors.length > 0);
-        const hasEmpty = Object.values(form.getFieldsValue()).some(
-            (v) => v === undefined || v === null || v === ""
-        );
-        setDisabled(hasErrors || hasEmpty);
-    };
 
     if (loading) return (<div>Загрузка...</div>)
     if (error || flight?.code === "not_found") return <FlightNotFound />
@@ -81,7 +72,6 @@ const BookingCreate = () => {
                         onFinish={onBooking}
                         className={styles.form}
                         requiredMark={false}
-                        onFieldsChange={onFieldsChange}
                         data-testid="booking-form"
                     >
                         <div className={styles.contact}>
