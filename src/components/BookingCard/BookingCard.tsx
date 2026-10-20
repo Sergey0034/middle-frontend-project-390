@@ -8,13 +8,13 @@ type MyBookingProps = {
 };
 
 const BookingStatus  = {
-    Success: "Подтверждена",
-    Cancel: "Отменена"
+    confirmed: "Подтверждена",
+    cancelled: "Отменена"
 } as const
 
 const BookingCard = ({ ticket }: MyBookingProps) => {
     const isConfirmed = ticket.status.toLowerCase() === "confirmed";
-    const [status, setStatus] = useState(isConfirmed ? BookingStatus.Success : BookingStatus.Cancel);
+    const [status, setStatus] = useState(isConfirmed ? BookingStatus.confirmed : BookingStatus.cancelled);
     const iconCurrency = ticket.totalPrice.currency === "RUB" ? '₽' : ticket.totalPrice.currency;
     const [cancelStatus, setCancelStatus] = useState("idle");
 
@@ -25,11 +25,11 @@ const BookingCard = ({ ticket }: MyBookingProps) => {
                 lastName: ticket.passengers[0].lastName
             });
             setCancelStatus("success");
-            setStatus(BookingStatus.Cancel)
+            setStatus(BookingStatus.cancelled)
         } catch (err) {
             if (err instanceof Error) {
                 setCancelStatus("error");
-                setStatus(isConfirmed ? BookingStatus.Success : BookingStatus.Cancel)
+                setStatus(isConfirmed ? BookingStatus.confirmed : BookingStatus.cancelled)
             }
         }
     }
@@ -37,8 +37,8 @@ const BookingCard = ({ ticket }: MyBookingProps) => {
         <div className={styles.container} data-testid="booking-details">
             <header className={styles.header}>
                 <div className={styles.code} data-testid="booking-code">{ticket.code}</div>
-                <div className={clsx(styles.status, status === BookingStatus.Success ? styles.success : styles.cancel)} data-testid="booking-status"
-                    data-status={ticket.status}
+                <div className={clsx(styles.status, status === BookingStatus.confirmed ? styles.success : styles.cancel)} data-testid="booking-status"
+                    data-status={status === BookingStatus.confirmed ? 'confirmed' : 'cancelled'}
                 >
                     {status.toUpperCase()}
                 </div>

@@ -5,6 +5,15 @@
     justify-content: space-between;
 }
 
-.submitBtn  {
+.submitBtn {
     padding: 0 72px;
+}
+
+.option {
+    padding: 6px 11px;
+    width: 100%;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+    font-family: var(--font-base);
+    font-size: 14px;
 }

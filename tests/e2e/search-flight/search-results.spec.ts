@@ -8,25 +8,11 @@ async function fillSearchForm(
         destination = "Санкт-Петербург",
     }: { origin?: string; destination?: string } = {},
 ) {
-    await page
-        .getByTestId("search-origin")
-        .locator(".ant-form-item-control-input-content")
-        .click();
-    await page
-        .getByTestId("search-origin")
-        .locator(".ant-select-dropdown:visible")
-        .getByText(origin, { exact: true })
-        .click();
+    await page.getByTestId("search-origin").selectOption({ label: origin });
 
     await page
         .getByTestId("search-destination")
-        .locator(".ant-form-item-control-input-content")
-        .click();
-    await page
-        .getByTestId("search-destination")
-        .locator(".ant-select-dropdown:visible")
-        .getByText(destination, { exact: true })
-        .click();
+        .selectOption({ label: destination });
 
     await page.getByTestId("search-date").click();
     await page.locator(".ant-picker-dropdown").waitFor({ state: "visible" });

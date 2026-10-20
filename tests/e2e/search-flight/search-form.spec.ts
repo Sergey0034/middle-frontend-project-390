@@ -2,7 +2,6 @@ import { test, expect } from "@playwright/test";
 import { mockFlights } from "../../fixtures/mock-flights";
 
 test.describe("Форма поиска рейсов", () => {
-
     test.beforeEach(async ({ page }) => {
         await page.route("**/api/cities", (route) =>
             route.fulfill({
@@ -29,7 +28,7 @@ test.describe("Форма поиска рейсов", () => {
             .waitFor({ state: "visible" });
     });
 
-    test("Отображение всех полей формы", async ({page}) => {
+    test("Отображение всех полей формы", async ({ page }) => {
         await expect(page.getByTestId("flight-search-form")).toBeVisible();
         await expect(page.getByTestId("search-origin")).toBeVisible();
         await expect(page.getByTestId("search-destination")).toBeVisible();
@@ -38,18 +37,12 @@ test.describe("Форма поиска рейсов", () => {
         await expect(page.getByTestId("search-submit")).toBeVisible();
     });
 
-    test("Ошибки валидации", async ({page}) => {
-        await page.getByTestId("search-origin").hover();
-        await page
-            .getByTestId("search-origin")
-            .locator(".ant-select-clear")
-            .click();
+    test("Ошибки валидации", async ({ page }) => {
+        await page.getByTestId("search-origin").selectOption({ index: 0 });
 
-        await page.getByTestId("search-destination").hover();
         await page
             .getByTestId("search-destination")
-            .locator(".ant-select-clear")
-            .click();
+            .selectOption({ index: 0 });
 
         await page.getByTestId("search-date").click();
         await page.locator(".ant-picker-clear").click();
@@ -63,36 +56,25 @@ test.describe("Форма поиска рейсов", () => {
         ).toBeVisible();
     });
 
-    test("Выбор города вылета", async ({page}) => {
-        await page.getByTestId("search-origin")
-            .locator(".ant-form-item-control-input-content")
-            .click();
-        await page
-            .getByTestId("search-origin")
-            .locator(".ant-select-dropdown:visible")
-            .getByText("Москва", { exact: true })
-            .click();
+    test("Выбор города вылета", async ({ page }) => {
+         await page
+             .getByTestId("search-origin")
+             .selectOption({ label: "Москва" });
 
         await expect(page.getByTestId("search-origin")).toContainText("Москва");
     });
 
-    test("Выбор города прилета", async ({page}) => {
+    test("Выбор города прилета", async ({ page }) => {
         await page
             .getByTestId("search-destination")
-            .locator(".ant-form-item-control-input-content")
-            .click();
-        await page
-            .getByTestId("search-destination")
-            .locator(".ant-select-dropdown:visible")
-            .getByText("Санкт-Петербург", { exact: true })
-            .click();
+             .selectOption({ label: "Санкт-Петербург" });            
 
         await expect(page.getByTestId("search-destination")).toContainText(
             "Санкт-Петербург",
         );
     });
 
-    test("Выбор даты", async ({page}) => {
+    test("Выбор даты", async ({ page }) => {
         await page.getByTestId("search-date").click();
         await page
             .locator(".ant-picker-dropdown")
@@ -104,7 +86,7 @@ test.describe("Форма поиска рейсов", () => {
         await expect(page.getByTestId("search-date")).not.toHaveValue("");
     });
 
-    test("Число пассажиров", async ({page}) => {
+    test("Число пассажиров", async ({ page }) => {
         await page.getByTestId("search-passengers").fill(String(3));
         await expect(page.getByTestId("search-passengers")).toHaveValue("3");
     });

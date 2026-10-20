@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from "react";
 import type { City } from "../../../types/cities";
 import styles from "./SearchForm.module.css"
-import { Form, Button, DatePicker, InputNumber, Select } from "antd";
+import { Form, Button, DatePicker, InputNumber } from "antd";
 import dayjs from "dayjs";
 import type { Dayjs } from "dayjs";
 
@@ -80,15 +80,19 @@ function SearchForm({ cities, onSearch }: SearchFormProps) {
                 style={{
                     width: '30%'
                 }}
-                data-testid="search-origin"
+                
             >
-                <Select
-                    allowClear
-                    showSearch
-                    placeholder="Город вылета"
-                    options={citiesForm}
-                    getPopupContainer={trigger => trigger.parentElement!}
-                />
+                <select
+                    data-testid="search-origin"
+                    className={styles.option}
+                >
+                    <option value="">Город вылета</option>
+                    {citiesForm.map((city) => (
+                        <option key={city.value} value={city.value}>
+                            {city.label}
+                        </option>
+                    ))}
+                </select>
             </Form.Item>
 
             <Form.Item
@@ -98,15 +102,18 @@ function SearchForm({ cities, onSearch }: SearchFormProps) {
                 style={{
                     width: '30%'
                 }}
-                data-testid="search-destination"
             >
-                <Select
-                    allowClear
-                    showSearch
-                    placeholder="Город вылета"
-                    options={citiesForm}
-                    getPopupContainer={trigger => trigger.parentElement!}
-                />
+                <select
+                    data-testid="search-destination"
+                    className={styles.option}
+                >
+                    <option value="" >Город прилета</option>
+                    {citiesForm.map((city) => (
+                        <option key={city.value} value={city.value}>
+                            {city.label}
+                        </option>
+                    ))}
+                </select>
             </Form.Item>
 
             <Form.Item
