@@ -51,6 +51,13 @@ test.describe("Результаты поиска рейсов", () => {
                 ]),
             }),
         );
+        await page.route("**/api/flights**", (route) =>
+            route.fulfill({
+                status: 200,
+                contentType: "application/json",
+                body: JSON.stringify(mockFlights),
+            }),
+        );
         await page.goto("/");
         await page
             .getByTestId("flight-search-form")

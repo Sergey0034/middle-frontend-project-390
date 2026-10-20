@@ -25,7 +25,7 @@ export default defineConfig({
         command: "npm run build && npm run preview -- --host 127.0.0.1",
         url: APP_URL,
         reuseExistingServer: !process.env.CI,
-        timeout: 360 * 1000,
+        timeout: 120 * 1000,
         stdout: "pipe",
         stderr: "pipe",
     },
