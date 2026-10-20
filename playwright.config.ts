@@ -11,9 +11,9 @@ export default defineConfig({
     reporter: "html",
     use: {
         baseURL: APP_URL,
-        trace: "on-first-retry",
-        actionTimeout: process.env.CI ? 45_000 : 0,
-        navigationTimeout: process.env.CI ? 45_000 : 0,
+        trace: "retain-on-failure",
+        actionTimeout: process.env.CI ? 15_000 : 0,
+        navigationTimeout: process.env.CI ? 20_000 : 0,
     },
     projects: [
         {
@@ -22,16 +22,15 @@ export default defineConfig({
         },
     ],
     webServer: {
-        command:
-            "npm run build && npm run preview -- --host 127.0.0.1",
+        command: "npm run build && npm run preview -- --host 127.0.0.1",
         url: APP_URL,
         reuseExistingServer: !process.env.CI,
-        timeout: 480 * 1000,
+        timeout: 360 * 1000,
         stdout: "pipe",
         stderr: "pipe",
     },
-    timeout: process.env.CI ? 60_000 : 30_000,
+    timeout: 30_000,
     expect: {
-        timeout: process.env.CI ? 20_000 : 5_000,
+        timeout: process.env.CI ? 10_000 : 5_000,
     },
 });

@@ -22,6 +22,9 @@ test.describe("Мои брони", () => {
             }),
         );
         await page.goto("/");
+        await page
+            .getByTestId("flight-search-form")
+            .waitFor({ state: "visible" });
         await page.getByTestId("nav-lookup").click();
     });
 
