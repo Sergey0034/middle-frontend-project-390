@@ -29,7 +29,7 @@ export default defineConfig({
         stdout: "pipe",
         stderr: "pipe",
     },
-    // timeout: process.env.CI ? 60_000 : 30_000,
+    timeout: process.env.CI ? 60_000 : 30_000,
     // expect: {
     //     timeout: process.env.CI ? 10_000 : 5_000,
     // },
