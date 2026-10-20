@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { fillFormBooking } from "./helpers/fillFormBooking";
 
 test.describe("Оформление бронирования", () => {
-    test.beforeEach(async ({ page }, testInfo) => {
+    test.beforeEach(async ({ page }) => {
         await page.route("**/api/flights/fl_1", async (route) => {
             await route.fulfill({
                 status: 200,

@@ -10,7 +10,10 @@ install-browsers:
 build:
 	npm run build
 
+lint:
+	npm run lint
+
 start:
 	npx frontend-flight-booking-server start -s ./dist
 
-ci: install install-browsers test
+ci: install lint install-browsers test

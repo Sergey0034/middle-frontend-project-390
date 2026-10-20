@@ -60,7 +60,7 @@ function SearchForm({ cities, onSearch }: SearchFormProps) {
         }
 
 
-    }, [citiesForm, form])
+    }, [citiesForm, form, onSearch])
 
     return (
         <Form

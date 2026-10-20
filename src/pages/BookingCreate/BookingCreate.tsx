@@ -37,7 +37,7 @@ const BookingCreate = () => {
             const { data } = await api.post(`/api/bookings`, formValues);
             setSubmitResult(data);
             setStatusSubmit("success")
-        } catch (e) {
+        } catch {
             setStatusSubmit("error");
         }
     }
