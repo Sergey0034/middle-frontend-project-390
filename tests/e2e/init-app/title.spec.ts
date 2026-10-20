@@ -21,6 +21,7 @@ test("на странице есть не пустой <h1>", async ({ page }) =
         }),
     );
     await page.goto("/");
+    await page.getByTestId("flight-search-form").waitFor({ state: "visible" });
     const h1 = page.locator("h1");
     await expect(h1).toBeVisible();
     await expect(h1).toHaveText(/Бронирование авиабилетов/);
