@@ -13,4 +13,7 @@ build:
 start:
 	npx frontend-flight-booking-server start -s ./dist
 
-ci: install install-browsers test
+start-back:
+	npx frontend-flight-booking-server start
+
+ci: install install-browsers start-back test

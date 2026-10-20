@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const APP_URL = "http://127.0.0.1:8080";
+const APP_URL = "http://127.0.0.1:4173";
 
 export default defineConfig({
     testDir: "./tests",
@@ -22,7 +22,7 @@ export default defineConfig({
         },
     ],
     webServer: {
-        command: "npx frontend-flight-booking-server start -s ./dist",
+        command: "npm run build && npm run preview -- --host 127.0.0.1",
         url: APP_URL,
         reuseExistingServer: !process.env.CI,
         timeout: 360 * 1000,
