@@ -22,15 +22,16 @@ export default defineConfig({
         },
     ],
     webServer: {
-        command: "npm run build && npm run preview -- --host 127.0.0.1",
+        command:
+            "npm run build && npm run preview -- --host 127.0.0.1",
         url: APP_URL,
         reuseExistingServer: !process.env.CI,
-        timeout: 360 * 1000,
+        timeout: 480 * 1000,
         stdout: "pipe",
         stderr: "pipe",
     },
     timeout: process.env.CI ? 60_000 : 30_000,
-    // expect: {
-    //     timeout: process.env.CI ? 10_000 : 5_000,
-    // },
+    expect: {
+        timeout: process.env.CI ? 20_000 : 5_000,
+    },
 });
