@@ -51,8 +51,7 @@ const BookingCreate = () => {
     };
 
     if (loading) return (<div>Загрузка...</div>)
-    if (error) return (<div>Ошибка загрузки: <span>{error}</span></div>)
-    if (flight?.code === "not_found") return <FlightNotFound />
+    if (error || flight?.code === "not_found") return <FlightNotFound />
 
     return (
         <div className={styles.container}>
@@ -139,7 +138,7 @@ const BookingCreate = () => {
                                         <Input
                                             type="text"
                                             placeholder="Имя"
-                                            data-testid={`passenger-<${index}>-firstName`}
+                                            data-testid={`passenger-${index}-firstName`}
                                         />
                                     </Form.Item>
                                     <Form.Item
@@ -155,7 +154,7 @@ const BookingCreate = () => {
                                         <Input
                                             type="text"
                                             placeholder="Фамилия"
-                                            data-testid={`passenger-<${index}>-lastName`}
+                                            data-testid={`passenger-${index}-lastName`}
                                         />
                                     </Form.Item>
                                     <Form.Item
@@ -167,7 +166,7 @@ const BookingCreate = () => {
                                         <DatePicker
                                             placeholder="mm/dd/yyyy"
                                             format="DD/MM/YYYY"
-                                            data-testid={`passenger-<${index}>-dob`}
+                                            data-testid={`passenger-${index}-dob`}
                                         />
                                     </Form.Item>
                                     <Form.Item
@@ -191,7 +190,7 @@ const BookingCreate = () => {
                                             }}
                                             placeholder="____ ______"
                                             allowClear
-                                            data-testid={`passenger-<${index}>-document`}
+                                            data-testid={`passenger-${index}-document`}
                                         />
                                     </Form.Item>
                                 </div>

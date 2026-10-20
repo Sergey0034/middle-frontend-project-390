@@ -50,20 +50,20 @@ test.describe("Оформление бронирования", () => {
     test("поля email, контакты и пассажиры", async ({ page }) => {
         await expect(page.getByTestId("contact-email")).toBeVisible();
         await expect(page.getByTestId("contact-phone")).toBeVisible();
-        await expect(page.getByTestId("passenger-<0>-firstName")).toBeVisible();
-        await expect(page.getByTestId("passenger-<0>-lastName")).toBeVisible();
-        await expect(page.getByTestId("passenger-<0>-dob")).toBeVisible();
-        await expect(page.getByTestId("passenger-<0>-document")).toBeVisible();
+        await expect(page.getByTestId("passenger-0-firstName")).toBeVisible();
+        await expect(page.getByTestId("passenger-0-lastName")).toBeVisible();
+        await expect(page.getByTestId("passenger-0-dob")).toBeVisible();
+        await expect(page.getByTestId("passenger-0-document")).toBeVisible();
     });
 
     test("добавление пассажира", async ({ page }) => {
         const addPassengersBtn = page.getByTestId("add-passenger");
         await expect(addPassengersBtn).toBeVisible();
         await addPassengersBtn.click();
-        await expect(page.getByTestId("passenger-<1>-firstName")).toBeVisible();
-        await expect(page.getByTestId("passenger-<1>-lastName")).toBeVisible();
-        await expect(page.getByTestId("passenger-<1>-dob")).toBeVisible();
-        await expect(page.getByTestId("passenger-<1>-document")).toBeVisible();
+        await expect(page.getByTestId("passenger-1-firstName")).toBeVisible();
+        await expect(page.getByTestId("passenger-1-lastName")).toBeVisible();
+        await expect(page.getByTestId("passenger-1-dob")).toBeVisible();
+        await expect(page.getByTestId("passenger-1-document")).toBeVisible();
     });
 
     test("бронирование", async ({ page }) => {
@@ -129,11 +129,10 @@ test.describe("Оформление бронирования", () => {
         await expect(code).toHaveText(/^[A-Z0-9]{6}$/);
     });
 
-    // На моках бэк отдает один и тот же результат id=fl_1
-    // test("состояние «рейс не найден»: открыт /booking/<id рейса> с неизвестным id.", async ({ page }) => {
-    //     await page.goto("/booking/test_1");
-    //     await expect(page.getByTestId("flight-not-found")).toBeVisible();
-    // });
+    test("состояние «рейс не найден»: открыт /booking/<id рейса> с неизвестным id.", async ({ page }) => {
+        await page.goto("/booking/test_1");
+        await expect(page.getByTestId("flight-not-found")).toBeVisible();
+    });
 
     test("сообщение об ошибке оформления", async ({ page }) => {
         await page.route("**/api/bookings", async (route) => {
