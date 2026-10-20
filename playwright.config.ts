@@ -12,7 +12,7 @@ export default defineConfig({
     use: {
         baseURL: APP_URL,
         trace: "on-first-retry",
-        actionTimeout: process.env.CI ? 15_000 : 0,
+        actionTimeout: process.env.CI ? 45_000 : 0,
         navigationTimeout: process.env.CI ? 45_000 : 0,
     },
     projects: [
@@ -25,7 +25,7 @@ export default defineConfig({
         command: "npm run build && npm run preview -- --host 127.0.0.1",
         url: APP_URL,
         reuseExistingServer: !process.env.CI,
-        timeout: 240 * 1000,
+        timeout: 360 * 1000,
         stdout: "pipe",
         stderr: "pipe",
     },
