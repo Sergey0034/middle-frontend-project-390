@@ -24,8 +24,8 @@ const BookingCard = ({ ticket }: MyBookingProps) => {
             await api.post(`/api/bookings/${ticket.code}/cancel`, {
                 lastName: ticket.passengers[0].lastName
             });
-            setCancelStatus("success");
             setStatus(BookingStatus.cancelled)
+            setCancelStatus("success");
         } catch (err) {
             if (err instanceof Error) {
                 setCancelStatus("error");
@@ -52,7 +52,7 @@ const BookingCard = ({ ticket }: MyBookingProps) => {
             </div>
             {cancelStatus === "error" && <div>Ошибка при отмене бронирования</div>}
             {cancelStatus === "loading" && <div>Отменяем бронирование...</div>}
-            {(isConfirmed && cancelStatus === "idle") && <button
+            {(status === BookingStatus.confirmed) && <button
                 className={styles.btn}
                 type="button"
                 onClick={onCancelBooking}
