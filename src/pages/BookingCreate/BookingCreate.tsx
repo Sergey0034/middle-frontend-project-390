@@ -154,8 +154,8 @@ const BookingCreate = () => {
                                         
                                     >
                                         <DatePicker
-                                            placeholder="mm/dd/yyyy"
-                                            format="DD/MM/YYYY"
+                                            placeholder="yyyy-mm-dd"
+                                            format="YYYY-MM-DD"
                                             data-testid={`passenger-${index}-dob`}
                                         />
                                     </Form.Item>
